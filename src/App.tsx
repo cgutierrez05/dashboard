@@ -9,6 +9,8 @@ import SelectorUI from './componentes/SelectorUI';
 import IndicatorUI from './componentes/IndicatorUI';
 import useFetchData from './functions/useFetchData';
 import type { DataState } from './types/DashboardTypes';
+import TableUI from './componentes/TableUI';
+import ChartUI from './componentes/ChartUI';
 
 function App() {
   const dataFetcherOutput: DataState = useFetchData();
@@ -57,10 +59,14 @@ function App() {
         </Grid>
 
         {/* Gráfico */}
-        <Grid  size={{ xs: 12, md: 6 }} sx={{ display: { xs: "none", md: "block"} }}>Elemento: Gráfico</Grid>
+        <Grid  size={{ xs: 12, md: 6 }} sx={{ display: { xs: "none", md: "block"} }}>
+          <ChartUI />
+        </Grid>
 
         {/* Tabla */}
-        <Grid  size={{ xs: 12, md: 6 }} sx={{ display: { xs: "none", md: "block"} }}>Elemento: Tabla</Grid>
+        <Grid  size={{ xs: 12, md: 6 }} sx={{ display: { xs: "none", md: "block"} }}>
+          <TableUI />
+        </Grid>
 
         {/* Información adicional */}
         <Grid  size={{ xs: 12, md: 12 }}>Elemento: Información adicional</Grid>
