@@ -4,6 +4,14 @@ export interface DataState {
   error: string | null;
 }
 
+export interface SelectorProps {
+  onOptionSelect: (option: string) => void;
+}
+
+export interface GeneralProps {
+  resultado: DataState; 
+}
+
 /* export interface OpenMeteoResponse {
   latitude: number
   longitude: number

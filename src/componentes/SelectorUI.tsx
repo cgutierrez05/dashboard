@@ -3,12 +3,14 @@ import InputLabel from '@mui/material/InputLabel';
 import Select, { type SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
+import type { SelectorProps } from '../types/DashboardTypes';
 
-export default function SelectorUI() {
+export default function SelectorUI({ onOptionSelect }: SelectorProps) {
     const [cityInput, setCityInput] = useState('');    
     
     const handleChange = (event: SelectChangeEvent<string>) => {
-        setCityInput(event.target.value)
+        setCityInput(event.target.value);
+        onOptionSelect(event.target.value);
     }
 
 

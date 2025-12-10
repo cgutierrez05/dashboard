@@ -11,9 +11,11 @@ import useFetchData from './functions/useFetchData';
 import type { DataState } from './types/DashboardTypes';
 import TableUI from './componentes/TableUI';
 import ChartUI from './componentes/ChartUI';
+import { useState } from 'react';
 
 function App() {
-  const dataFetcherOutput: DataState = useFetchData();
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const dataFetcherOutput: DataState = useFetchData(selectedOption);
 
   return (
       <Grid container spacing={5} justifyContent="center" alignItems="center">
@@ -24,7 +26,7 @@ function App() {
          <Grid  size={{ xs: 12, md: 12 }} container justifyContent="right" alignItems="center"><AlertUI description="No se preveen lluvias"/></Grid>
 
          {/* Selector */}
-         <Grid  size={{ xs: 12, md: 3 }}><SelectorUI/></Grid>
+         <Grid  size={{ xs: 12, md: 3 }}><SelectorUI onOptionSelect={setSelectedOption}/></Grid>
 
          {/* Indicadores */}
         <Grid  size={{ xs: 12, md: 9 }} container justifyContent="center" alignItems="center">
@@ -32,9 +34,10 @@ function App() {
           {dataFetcherOutput.error && <p>Error: {dataFetcherOutput.error}</p>}
           {dataFetcherOutput.data && 
           <>
-            <Grid size={{ xs: 12, md: 3 }}> <IndicatorUI title='Temperatura (2m)' 
-            description={`${dataFetcherOutput?.data.current.temperature_2m} 
-            ${dataFetcherOutput?.data.current_units.temperature_2m}`} />
+            <Grid size={{ xs: 12, md: 3 }}>
+              <IndicatorUI title='Temperatura (2m)' 
+              description={`${dataFetcherOutput?.data.current.temperature_2m} 
+              ${dataFetcherOutput?.data.current_units.temperature_2m}`} />
             </Grid>
 
             <Grid size={{ xs: 12, md: 3 }}>
@@ -60,12 +63,12 @@ function App() {
 
         {/* Gráfico */}
         <Grid  size={{ xs: 12, md: 6 }} sx={{ display: { xs: "none", md: "block"} }}>
-          <ChartUI />
+          <ChartUI resultado = {dataFetcherOutput}/>
         </Grid>
 
         {/* Tabla */}
         <Grid  size={{ xs: 12, md: 6 }} sx={{ display: { xs: "none", md: "block"} }}>
-          <TableUI />
+          <TableUI resultado = {dataFetcherOutput}/>
         </Grid>
 
         {/* Información adicional */}

@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import { DataGrid, type GridColDef } from '@mui/x-data-grid';
 import useFetchData from '../functions/useFetchData';
+import type { GeneralProps } from '../types/DashboardTypes';
 
 function combineArrays(arrLabels: Array<string>, arrLabels2: Array<string>, arrValues1: Array<number>, arrValues2: Array<number>) {
     return arrLabels.map((date, index) => ({
@@ -49,9 +50,7 @@ const columns: GridColDef[] = [
 const arrValues2 = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
 const arrLabels = ['A','B','C','D','E','F','G'];*/
 
-export default function TableUI() {
-    const resultado = useFetchData();
-
+export default function TableUI({resultado}: GeneralProps) {
     const fechas = resultado.data?.hourly.time.map((time) => {
         let date = time.split('T')[0];
         return date
