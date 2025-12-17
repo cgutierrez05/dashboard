@@ -12,6 +12,7 @@ import type { DataState } from './types/DashboardTypes';
 import TableUI from './componentes/TableUI';
 import ChartUI from './componentes/ChartUI';
 import { useState } from 'react';
+import MapWithRainRisk from './componentes/MapUI';
 
 function App() {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -33,31 +34,31 @@ function App() {
           {dataFetcherOutput.loading && <p>Cargando datos...</p>}
           {dataFetcherOutput.error && <p>Error: {dataFetcherOutput.error}</p>}
           {dataFetcherOutput.data && 
-          <>
-            <Grid size={{ xs: 12, md: 3 }}>
-              <IndicatorUI title='Temperatura (2m)' 
-              description={`${dataFetcherOutput?.data.current.temperature_2m} 
-              ${dataFetcherOutput?.data.current_units.temperature_2m}`} />
-            </Grid>
+            <>
+              <Grid size={{ xs: 12, md: 3 }}>
+                <IndicatorUI title='Temperatura (2m)' 
+                description={`${dataFetcherOutput?.data.current.temperature_2m} 
+                ${dataFetcherOutput?.data.current_units.temperature_2m}`} />
+              </Grid>
 
-            <Grid size={{ xs: 12, md: 3 }}>
-              <IndicatorUI title='Temperatura Aparente' 
-              description={`${dataFetcherOutput?.data.current.apparent_temperature} 
-              ${dataFetcherOutput?.data.current_units.apparent_temperature}`} />
-            </Grid>
+              <Grid size={{ xs: 12, md: 3 }}>
+                <IndicatorUI title='Temperatura Aparente' 
+                description={`${dataFetcherOutput?.data.current.apparent_temperature} 
+                ${dataFetcherOutput?.data.current_units.apparent_temperature}`} />
+              </Grid>
 
-            <Grid size={{ xs: 12, md: 3 }}>
-              <IndicatorUI title='Velocidad del viento' 
-              description= {`${dataFetcherOutput?.data.current.wind_speed_10m} 
-              ${dataFetcherOutput?.data.current_units.wind_speed_10m}`} />
-            </Grid>
+              <Grid size={{ xs: 12, md: 3 }}>
+                <IndicatorUI title='Velocidad del viento' 
+                description= {`${dataFetcherOutput?.data.current.wind_speed_10m} 
+                ${dataFetcherOutput?.data.current_units.wind_speed_10m}`} />
+              </Grid>
 
-            <Grid size={{ xs: 12, md: 3 }}>
-              <IndicatorUI title='Humedad relativa' 
-              description= {`${dataFetcherOutput?.data.current.relative_humidity_2m} 
-              ${dataFetcherOutput?.data.current_units.relative_humidity_2m}`} />
-            </Grid>
-          </>
+              <Grid size={{ xs: 12, md: 3 }}>
+                <IndicatorUI title='Humedad relativa' 
+                description= {`${dataFetcherOutput?.data.current.relative_humidity_2m} 
+                ${dataFetcherOutput?.data.current_units.relative_humidity_2m}`} />
+              </Grid>
+            </>
           }
         </Grid>
 
@@ -72,7 +73,14 @@ function App() {
         </Grid>
 
         {/* Información adicional */}
-        <Grid  size={{ xs: 12, md: 12 }}>Elemento: Información adicional</Grid>
+        <Grid  size={{ xs: 12, md: 12 }}>
+          {/*
+          <MapWithRainRisk
+            latitude={dataFetcherOutput?.data?.latitude }
+            longitude={dataFetcherOutput?.data?.longitude}
+            humidity={dataFetcherOutput?.data?.current.relative_humidity_2m}
+          /> */}
+        </Grid>
 
       </Grid>
   );

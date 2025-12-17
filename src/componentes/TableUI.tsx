@@ -1,6 +1,5 @@
 import Box from '@mui/material/Box';
 import { DataGrid, type GridColDef } from '@mui/x-data-grid';
-import useFetchData from '../functions/useFetchData';
 import type { GeneralProps } from '../types/DashboardTypes';
 
 function combineArrays(arrLabels: Array<string>, arrLabels2: Array<string>, arrValues1: Array<number>, arrValues2: Array<number>) {

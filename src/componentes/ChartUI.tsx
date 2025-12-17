@@ -13,9 +13,9 @@ export default function ChartUI({ resultado }: GeneralProps ) {
         return date
     }) ?? [];
 
-    const temp = resultado.data?.hourly.temperature_2m.slice(0, 92) ?? [];
+    const temp = resultado.data?.hourly.temperature_2m.slice(0, 24) ?? [];
 
-    const windsp = resultado.data?.hourly.wind_speed_10m.slice(0, 92) ?? [];
+    const windsp = resultado.data?.hourly.wind_speed_10m.slice(0, 24) ?? [];
 
     
     return (
