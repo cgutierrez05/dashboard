@@ -12,7 +12,6 @@ import type { DataState } from './types/DashboardTypes';
 import TableUI from './componentes/TableUI';
 import ChartUI from './componentes/ChartUI';
 import { useState } from 'react';
-import MapWithRainRisk from './componentes/MapUI';
 
 function App() {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
